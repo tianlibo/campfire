@@ -1,0 +1,51 @@
+default: &default
+  title: face
+  host: localhost:3000
+
+  mailer:
+    # For localhost postfix
+    smtp_settings:
+      address: smtp.mandrillapp.com
+      port: 587
+      enable_starttls_auto: true
+      domain: startupclass.club
+      user_name: zhangluyao.levi@gmail.com
+      password: 
+      authentication: plain
+    default_options:
+      from: notification@startupclass.club
+    default_url_options:
+      host: localhost:3000
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    db: 0
+  weixin:
+
+development:
+  <<: *default
+  admin_passwords:
+    - qwertyuiop
+    - asdfghjkl
+  admin_phones:
+    - '18611611821'
+    - '18911068791'
+  agora:
+    appId: 219790842d2b4b3b8bf2d7d62f63b8d2
+    appCertificate: e92078e947894e3585bf58047e11b70c
+
+test:
+  <<: *default
+  admin_emails:
+    - zhangluyao.levi@gmail.com
+
+production:
+  <<: *default
+
+  agora:
+    appId: 7e6c6f9eda8548d7a7812a1c53c7b109
+    appCertificate: 787bc073ad5d4880978f4799c27c1006
+
+  admin_emails:
+    # - admin@example.co
